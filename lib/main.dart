@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
 
 import 'movie_details.dart';
 import 'movie.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  var app = await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  print("\n\nConnected to Firebase App ${app.options.projectId}\n\n");
+
   runApp(const MyApp());
 }
 
